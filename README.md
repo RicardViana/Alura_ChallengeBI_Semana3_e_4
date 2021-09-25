@@ -1,4 +1,4 @@
-# Alura - Challenge BI - Semana 3 e 4 - 
+# Alura - Challenge BI - Semana 3 e 4 - Financeiro
 
 # Desafio Proposto
 
