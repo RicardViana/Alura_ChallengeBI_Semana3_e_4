@@ -20,3 +20,5 @@ https://databinteligencia.com.br/produtos/dominando-o-power-bi/
 **Sites:**
 
 **Videos:**
+
+https://www.youtube.com/watch?v=6LkCEsWSySY
