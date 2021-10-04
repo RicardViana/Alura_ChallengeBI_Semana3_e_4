@@ -103,6 +103,17 @@ E relacionando as tabelas entre sim da seguinte forma:
 
 Medida   | Dax | Comentário
 -------- | ---------- | ----------
+Custos | SUM(F_notas_fiscais_pedidos[custos_total]) | Soma dos custos
+Despesas | Var Imposto = <br/> SUM(F_notas_fiscais_pedidos[imposto]) <br/> Var Frete = <br/> SUM(F_notas_fiscais_pedidos[frete_tratado]) <br/> Return Imposto + Frete <br/> | Soma das despesas 
+Frete | SUM(F_notas_fiscais_pedidos[frete_tratado]) | Soma do frete 
+Impostos | SUM(F_notas_fiscais_pedidos[imposto]) | Soma dos impostos
+Lucro | Var Receita = <br/> [Receita] <br/> Var Despesas = <br/> [Despesas]+[Custos] <br/> Return <br/> Receita-Despesas | Lucro da operação
+Receita | SUM(F_notas_fiscais_pedidos[valor_venda_tratado]) | Soma de receita 
+Todas Despesas | VAR Custos = <br/> [Custos] <br/> Frete = <br/> [Frete] <br/> Var Imposto = <br/> [Impostos] <br/> Return <br/> Custos + Frete + Imposto | Soma de todas as despesas (Custo, frete e impostos)
+Top Lucro | CALCULATE(<br/> [Lucro], <br/> TOPN( 5, <br/> ALLSELECTED(D_produtos[categoria_produto]), <br/> [Lucro]), <br/> VALUES(D_produtos[categoria_produto])) | Top cinco dos produtos com mais lucro 
+Top Vendedores | CALCULATE(<br/> [Receita],<br/> TOPN(5,<br/> ALLSELECTED(D_vendedores[nome_vendedor]), <br/> [Receita]), <br/> VALUES(D_vendedores[nome_vendedor])) |  Top cinco dos vendedores com mais venda 
+Ultima Atualização | "Ultima atualização em: " & SELECTEDVALUE('Ultima Atualiação'[Data e Hora]) | Buscar o valor da ultima atualização
+    
 
 ## Materiais de apoio 
 
