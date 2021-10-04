@@ -2,9 +2,38 @@
 
 # Desafio Proposto
 
+Nesse terceiro e ultimo desafio da **Alura** através do Challenge BI (https://www.alura.com.br/challenges/bi) foi proposto a criação de dois (2) dashboard para a área financeira da **Alura Store** (empresa ficticia), sendo uma delas um **overview financeiro** para acompanhamento das métricas abaixo:
+
+- Receita 
+- Custos
+- Despesas
+- Lucro
+
+e um outro para **análise de cenário**
+
+Onde foi criado o report abaixo através do Power BI e o background pelo Figma:
+
+**Overview financeiro**
+![image](https://user-images.githubusercontent.com/62486279/135931730-dd62ae27-431b-448b-911f-5783f904973d.png)
+
+**Análise de cenário**
+![image](https://user-images.githubusercontent.com/62486279/135931070-ef61471b-d337-4a3a-a871-a3e1348a7da4.png)
+
+Link: https://bit.ly/dashboarddefinanças
+
+E como nos outros projetos, todo o acompanhemento foi feito via Trello:
+
+![image](https://user-images.githubusercontent.com/62486279/135931836-584355c2-29fc-440a-b0bf-15e9e7ff2a55.png)
+
+Link: https://trello.com/b/8gb2Kmzn/challenge-bi-semana-3-e-4
+
 # Como o report foi criado?
 
 ## 1) ETL e Relacionamento entre tabelas
+
+
+![image](https://user-images.githubusercontent.com/62486279/135931933-c2b1a81a-c17e-45e9-96a7-49e66ad81194.png)
+
 
 ## 2) Calculos 
 
