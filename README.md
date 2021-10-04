@@ -31,8 +31,30 @@ Link: https://trello.com/b/8gb2Kmzn/challenge-bi-semana-3-e-4
 
 ## 1) ETL e Relacionamento entre tabelas
 
+Nesse projeto foi disponibilizado bases em SQL:
 
 ![image](https://user-images.githubusercontent.com/62486279/135931933-c2b1a81a-c17e-45e9-96a7-49e66ad81194.png)
+
+Onde foi necessario fazer a restauração utilizando o MySQL
+
+https://www.alura.com.br/artigos/restaurar-backup-banco-de-dados-mysql
+
+E criado a seguinte query:
+
+~~~SQL
+SELECT 
+  a.id_nota,a.numero_nota,a.id_pedido,a.id_vendedor,a.valor_venda,a.frete,a.imposto,
+  b.id_produto,b.quantidade,b.data_compra,
+  (c.preco/100) AS preco_tratado,(c.custos/100) as custo_tratado,(c.custos/100)*b.quantidade AS custos_total
+
+FROM 
+  notas_fiscais A left join pedidos B on a.id_pedido = b.id_pedido
+                  left join produtos C on b.id_produto = c.id_produto;
+~~~
+
+Resutando na seguinte consulta:
+
+![image](https://user-images.githubusercontent.com/62486279/135932511-df50f06c-2bb1-4385-a29d-e9f753807cef.png)
 
 
 ## 2) Calculos 
@@ -46,20 +68,6 @@ Medida   | Dax | Comentário
 
 https://databinteligencia.com.br/produtos/dominando-o-power-bi/
 
-**Sites:**
-
 **Videos:**
 
 https://www.youtube.com/watch?v=6LkCEsWSySY
-
-
-~~~SQL
-SELECT 
-  a.id_nota,a.numero_nota,a.id_pedido,a.id_vendedor,a.valor_venda,a.frete,a.imposto,
-  b.id_produto,b.quantidade,b.data_compra,
-  (c.preco/100) AS preco_tratado,(c.custos/100) as custo_tratado,(c.custos/100)*b.quantidade AS custos_total
-
-FROM 
-  notas_fiscais A left join pedidos B on a.id_pedido = b.id_pedido
-                  left join produtos C on b.id_produto = c.id_produto;
-~~~
