@@ -35,11 +35,13 @@ Nesse projeto foi disponibilizado bases em SQL:
 
 ![image](https://user-images.githubusercontent.com/62486279/135931933-c2b1a81a-c17e-45e9-96a7-49e66ad81194.png)
 
-Onde foi necessario fazer a restauração utilizando o MySQL
+Onde foi necessario fazer a restauração utilizando o MySQL conforme passo a passo abaixo: 
 
 https://www.alura.com.br/artigos/restaurar-backup-banco-de-dados-mysql
 
-E criado a seguinte query:
+E para criar a conexão junto ao Power BI, criamaos as seguintes Query 
+
+**Tabela - Notas fiscais, pedidos e produtos**
 
 ~~~SQL
 SELECT 
@@ -55,6 +57,26 @@ FROM
 Resutando na seguinte consulta:
 
 ![image](https://user-images.githubusercontent.com/62486279/135932511-df50f06c-2bb1-4385-a29d-e9f753807cef.png)
+
+**Tabela - Notas fiscais, pedidos e produtos**
+~~~SQL
+SELECT 
+  id_produto,categoria_produto,preco/100 as preco_tratado,custos/100 as custos_tratado 
+FROM 
+  produtos;
+~~~
+
+![image](https://user-images.githubusercontent.com/62486279/135934723-34da45c1-55e1-40c1-9d63-b84e487fe7ca.png)
+
+**Tabela - Vendedores**
+~~~SQL
+SELECT 
+  id_vendedor,nome_vendedor 
+FROM 
+  vendedores;
+~~~
+
+![image](https://user-images.githubusercontent.com/62486279/135934885-256f94eb-cd94-44dc-902f-4edc38db3a33.png)
 
 
 ## 2) Calculos 
