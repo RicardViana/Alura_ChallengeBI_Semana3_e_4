@@ -39,7 +39,7 @@ Onde foi necessario fazer a restauração utilizando o MySQL conforme passo a pa
 
 https://www.alura.com.br/artigos/restaurar-backup-banco-de-dados-mysql
 
-E para criar a conexão junto ao Power BI, criamaos as seguintes Query 
+E para criar a conexão de dados junto ao Power BI, criamaos as seguintes Query 
 
 **Tabela - Notas fiscais, pedidos e produtos**
 
@@ -53,8 +53,6 @@ FROM
   notas_fiscais A left join pedidos B on a.id_pedido = b.id_pedido
                   left join produtos C on b.id_produto = c.id_produto;
 ~~~
-
-Resutando na seguinte consulta:
 
 ![image](https://user-images.githubusercontent.com/62486279/135932511-df50f06c-2bb1-4385-a29d-e9f753807cef.png)
 
@@ -78,6 +76,30 @@ FROM
 
 ![image](https://user-images.githubusercontent.com/62486279/135934885-256f94eb-cd94-44dc-902f-4edc38db3a33.png)
 
+E realizando a tratativa necessaria na Query, pois os valores estavam armezado por 100
+
+Alem de criar três (3) tabelas auxiliares:
+
+![image](https://user-images.githubusercontent.com/62486279/135935061-6c0e90f1-0942-4e4e-ad5a-e8dd7f928c9f.png)
+
+~~~
+let
+    Fonte = Date.StartOfYear (List.Min(F_notas_fiscais_pedidos[data_compra])),
+    DataFinal = Date.EndOfYear (List.Max(F_notas_fiscais_pedidos[data_compra])),
+    Personalizar1 = List.Dates (Fonte,Number.From(DataFinal-Fonte)+1, #duration (1,0,0,0)),
+    #"Convertido para Tabela" = Table.FromList(Personalizar1, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    #"Tipo Alterado" = Table.TransformColumnTypes(#"Convertido para Tabela",{{"Column1", type date}}),
+    #"Colunas Renomeadas" = Table.RenameColumns(#"Tipo Alterado",{{"Column1", "Data"}}),
+    #"Ano Inserido" = Table.AddColumn(#"Colunas Renomeadas", "Ano", each Date.Year([Data]), Int64.Type),
+    #"Nome do Mês Inserido" = Table.AddColumn(#"Ano Inserido", "Nome do Mês", each Date.MonthName([Data]), type text),
+    #"Colocar Cada Palavra Em Maiúscula" = Table.TransformColumns(#"Nome do Mês Inserido",{{"Nome do Mês", Text.Proper, type text}})
+in
+    #"Colocar Cada Palavra Em Maiúscula"
+~~~
+
+E relacionando as tabelas entre sim da seguinte forma:
+
+![image](https://user-images.githubusercontent.com/62486279/135935234-8b429627-797d-40ed-ae15-1f67f7f6ea05.png)
 
 ## 2) Calculos 
 
