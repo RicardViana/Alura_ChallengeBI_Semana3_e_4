@@ -76,9 +76,7 @@ FROM
 
 ![image](https://user-images.githubusercontent.com/62486279/135934885-256f94eb-cd94-44dc-902f-4edc38db3a33.png)
 
-E realizando a tratativa necessaria na Query, pois os valores estavam armezado por 100
-
-Alem de criar três (3) tabelas auxiliares:
+Alem de realizar a tratativa necessaria na Query, pois os valores estavam armezado por 100 e por conta dos filtros necessarios, criamos três (3) tabelas auxiliares:
 
 ![image](https://user-images.githubusercontent.com/62486279/135935061-6c0e90f1-0942-4e4e-ad5a-e8dd7f928c9f.png)
 
