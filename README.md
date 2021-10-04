@@ -113,7 +113,11 @@ Todas Despesas | VAR Custos = <br/> [Custos] <br/> Frete = <br/> [Frete] <br/> V
 Top Lucro | CALCULATE(<br/> [Lucro], <br/> TOPN( 5, <br/> ALLSELECTED(D_produtos[categoria_produto]), <br/> [Lucro]), <br/> VALUES(D_produtos[categoria_produto])) | Top cinco dos produtos com mais lucro 
 Top Vendedores | CALCULATE(<br/> [Receita],<br/> TOPN(5,<br/> ALLSELECTED(D_vendedores[nome_vendedor]), <br/> [Receita]), <br/> VALUES(D_vendedores[nome_vendedor])) |  Top cinco dos vendedores com mais venda 
 Ultima Atualização | "Ultima atualização em: " & SELECTEDVALUE('Ultima Atualiação'[Data e Hora]) | Buscar o valor da ultima atualização
-    
+Receita_Cenario | SUM(F_notas_fiscais_pedidos[valor_venda_tratado]) * (1 + Cenario_Receita[Cenario_Receita Valor]) | Receita conforme % do cenario 
+Custos_Cenario | SUM(F_notas_fiscais_pedidos[custos_total]) * (1+Cenario_Custo[Cenario_Custo Valor]) | Custos conforme % do cenario
+Despesas_Cenario | Var Imposto = <br/> SUM(F_notas_fiscais_pedidos[imposto]) <br/> Var Frete = <br/> SUM(F_notas_fiscais_pedidos[frete_tratado]) <br/>Return (Imposto + Frete) * (1 + Cenario_Despesa[Cenario_Despesa Valor]) | Despesas conforme % do cenario
+Lucro_Cenario | Var Receita = <br/> [Receita_Cenario] <br/> Var Despesas = <br/> [Despesas_Cenario]+[Custos_Cenario] <br/> Return <br/> Receita-Despesas | Lucro conforme % do cenario
+Despesas + Custo Cenario | [Custos_Cenario] + [Despesas_Cenario] | Soma das despesas e custo conforme % do cenario
 
 ## Materiais de apoio 
 
